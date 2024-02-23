@@ -1,3 +1,0 @@
-/home/spikeyamk/file2cpparray/build/CMakeFiles/file2cpparray.dir
-/home/spikeyamk/file2cpparray/build/CMakeFiles/edit_cache.dir
-/home/spikeyamk/file2cpparray/build/CMakeFiles/rebuild_cache.dir

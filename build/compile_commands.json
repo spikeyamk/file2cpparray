@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/spikeyamk/file2cpparray/build",
-  "command": "/usr/bin/g++ -g -std=gnu++17 -Wall -Wextra -Wpedantic -o CMakeFiles/file2cpparray.dir/main.cpp.o -c /home/spikeyamk/file2cpparray/main.cpp",
-  "file": "/home/spikeyamk/file2cpparray/main.cpp",
-  "output": "CMakeFiles/file2cpparray.dir/main.cpp.o"
-}
-]
