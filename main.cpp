@@ -5,12 +5,12 @@
 #include <cstdint>
 #include <filesystem>
 
-void print_usage(const char* argv_0) {
-    std::cerr << "Usage: " << argv_0 << " [FILE]\n";
+void print_usage(const std::string& bin_name) {
+    std::cerr << "Usage: " << bin_name << " [FILE]\n";
 }
 
-void send_bin_name_and_args_to_cout(const int argc, char** argv) {
-	std::cerr << argv[0] << ':';
+void send_bin_name_and_args_to_cout(const std::string& bin_name, const int argc, char** argv) {
+	std::cerr << bin_name << ':';
 	for(size_t i = 1; i < static_cast<size_t>(argc); i++) {
 		std::cerr << " '" << argv[i] << '\'';
 		if(i == static_cast<size_t>(argc - 1)) {
@@ -21,10 +21,11 @@ void send_bin_name_and_args_to_cout(const int argc, char** argv) {
 }
 
 int main(int argc, char* argv[]) {
+    const auto bin_name { std::filesystem::path(argv[0]).filename().string() };
     if(argc != 2) {
-        send_bin_name_and_args_to_cout(argc, argv);
+        send_bin_name_and_args_to_cout(bin_name, argc, argv);
         std::cerr << "Invalid input: Needs exactly one argument: number of arguments: " << argc - 1 << std::endl;
-        print_usage(argv[0]);
+        print_usage(bin_name);
         return EXIT_FAILURE;
     }
 
@@ -32,9 +33,9 @@ int main(int argc, char* argv[]) {
     std::ifstream file(path, std::ios::binary | std::ios::in);
     
     if(file.is_open() == false) {
-        send_bin_name_and_args_to_cout(argc, argv);
+        send_bin_name_and_args_to_cout(bin_name, argc, argv);
         std::cerr << "Error opening file: '" << path.string() << "'\n";
-        print_usage(argv[0]);
+        print_usage(bin_name);
         return EXIT_FAILURE;
     }
 
